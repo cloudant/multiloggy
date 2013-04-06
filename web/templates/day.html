@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<title>#{{ channel }} {{ day }}</title>
+<meta charset="utf-8">
+<style>
+body { font: 14px/19px sans-serif; margin: 1em; max-width: 960px }
+h1 { font-size: 24px }
+.message .a, .action .a { color: #3636B2 }
+.join .a, .join .b { color: #2A8C2A }
+.quit .a, .quit .b, .part .a, .part .b { color: #64351F }
+.when { color: #000; text-decoration: none }
+.when:hover { text-decoration: underline }
+.b a { color: #000; text-decoration: underline }
+.b a:hover { background: #ffc }
+</style>
+
+<body>
+<h1>#{{ channel }} {{ day }}</h1>
+
+{% for line in lines %}
+<span class="{{ line[0] }}" id="{{ line[1] }}"><a href="#{{ line[1] }}" title="{{ line[2] }}" class="when">{{ line[2] }}</a> <span class="a">{{ line[3] }}</span> <span class="b">{{ line[4] }}</span></span><br/>
+{% else %}
+<em>No logs yet today!</em>
+{% endfor %}
+
+<hr/>
+<address>
+	<a href="/">IRC Logs @ {{ link }}</a>
+</address>
+</body>
+</html>

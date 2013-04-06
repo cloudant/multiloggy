@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<title>{{ org }} #{{ channel }} Logs</title>
+<style>
+@import "http://fonts.googleapis.com/css?family=Lato"; 
+body { font: 1.5em/1.5em Lato, sans-serif; margin: 3em 5em }
+a { text-decoration: none }
+a:hover { text-decoration: underline }
+h1 { font: 2.5em/1em Lato }
+h1, p { margin: 0 0 36px 0; padding: 0 }
+p.nav { font-size: 1.5em }
+.contribute { font-size: 16px }
+table { margin-left: 1em }
+.size { text-align: right; padding-left: 1em }
+</style>
+<body>
+<h1>{{ org }} #{{ channel }} Logs</h1>
+
+<p class="nav"><a href="/">Home</a> &middot; 
+<a href="today" class="today">Today</a>
+
+<table>
+	{% for log in logs %}
+	<tr>
+		<td><tr><td><a href="./{{ log['date'] }}">{{ log['date'] }}</a></td>
+		<td class="size">{{ log['size'] }} bytes</td>
+	</tr>
+	{% else %}
+    <tr><td><em>Unbelievable.  No entries here so far!</em></td></tr>
+	{% endfor %}
+</table>
+
+<hr/>
+<address>
+	<a href="/">IRC Logs @ {{ link }}</a>
+</address>
+</body>
+</html>
